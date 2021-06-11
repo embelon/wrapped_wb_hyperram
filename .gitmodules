@@ -1,0 +1,3 @@
+[submodule "wb_hyperram"]
+	path = wb_hyperram
+	url = https://github.com/embelon/wb_hyperram
