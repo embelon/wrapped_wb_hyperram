@@ -1,25 +1,25 @@
 --- 
 # information
 project: 
-  title: "title"
-  description: "description"
+  title: "Wishbone HyperRAM"
+  description: "Simple HyperRAM driver accesible on Wishbone bus"
   picture: docs/empty.png
-  author: "Author"
-  github: https://github.com/link
+  author: "Pawel Sitarz"
+  github: https://github.com/embelon/wrapped_wb_hyperram
   license: LICENSE
 
 # test within caravel
 caravel_test:
-  recipe: "coco_test"
+  recipe: "all"
   directory: "caravel_test"
-  id: 1
-  module_name: "wrapped_project"
-  instance_name: "wrapped_project"
+  id: 11
+  module_name: "wrapped_wb_hyperram"
+  instance_name: "wrapped_wb_hyperram"
 
 # module test
 module_test:
   recipe: "all" 
-  directory: "project directory"
+  directory: "wb_hyperram"
   makefile: "Makefile"
 
 # run the wrapper formal proof
@@ -34,11 +34,13 @@ openlane:
 # source required for various configs and module instantiation
 source:
     - wrapper.v
-    - other source files here
+    - wb_hyperram/src/wb_hyperram.v
+    - wb_hyperram/src/hyperram.v
+    - wb_hyperram/src/register_rw.v
 
 # gds - check size = 300x300, nothing on metal 5, do a DRC, check 141 tristate buffers, check LVS
 gds:
   directory: "gds"
-  gds_filename: "project.gds"
-  lvs_filename: "project.lvs.powered.v"
-  lef_filename: "project.lef"
+  gds_filename: "wrapped_wb_hyperram.gds"
+  lvs_filename: "wrapped_wb_hyperram.lvs.powered.v"
+  lef_filename: "wrapped_wb_hyperram.lef"

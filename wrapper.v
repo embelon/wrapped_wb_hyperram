@@ -2,8 +2,7 @@
 `ifdef FORMAL
     `define MPRJ_IO_PADS 38    
 `endif
-// update this to the name of your module
-module wrapped_project(
+module wrapped_wb_hyperram (
 `ifdef USE_POWER_PINS
     inout vdda1,	// User area 1 3.3V supply
     inout vdda2,	// User area 2 3.3V supply
@@ -73,13 +72,40 @@ module wrapped_project(
     assign io_oeb       = active ? buf_io_oeb       : {`MPRJ_IO_PADS{1'bz}};
     assign irq          = active ? buf_irq          : 3'bz;
     `endif
+    
+    wire hb_dq_oen;
 
-    // permanently set oeb so that outputs are always enabled: 0 is output, 1 is high-impedance
-    assign buf_io_oeb = {`MPRJ_IO_PADS{1'b0}};
+    wb_hyperram hyperram (
+        .wb_clk_i(wb_clk_i),
+        .wb_rst_i(wb_rst_i),
 
-    // Instantiate your module here, 
-    // connecting what you need of the above signals. 
-    // Use the buffered outputs for your module's outputs.
+        .wbs_stb_i(wbs_stb_i),
+        .wbs_cyc_i(wbs_cyc_i),
+        .wbs_we_i(wbs_we_i),
+        .wbs_sel_i(wbs_sel_i),
+        .wbs_dat_i(wbs_dat_i),
+        .wbs_addr_i(wbs_adr_i),
+        .wbs_ack_o(buf_wbs_ack_o),
+        .wbs_dat_o(buf_wbs_dat_o),
+
+        .rst_i(la_data_in[0] | !active),            // keep IP in reset if not active / selected
+
+	.hb_rstn_o(buf_io_out[8]),
+	.hb_csn_o(buf_io_out[9]),
+	.hb_clk_o(buf_io_out[10]),
+	.hb_clkn_o(buf_io_out[11]),
+	.hb_rwds_o(buf_io_out[12]),
+	.hb_rwds_oen(buf_io_oeb[12]),
+	.hb_rwds_i(io_in[12]),        
+	.hb_dq_o(buf_io_out[20:13]),
+	.hb_dq_oen(hb_dq_oen),
+	.hb_dq_i(io_in[20:13])
+    );
+
+    assign buf_io_oeb[20:13] = {8{hb_dq_oen}};
+
+    // enable outputs for rst, csn, clk, clkn 
+    assign buf_io_oeb[11:8] = 4'h0;
 
 endmodule 
 `default_nettype wire

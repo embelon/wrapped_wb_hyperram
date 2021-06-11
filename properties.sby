@@ -5,10 +5,13 @@ mode prove
 smtbmc
 
 [script]
-read -formal wrapper.v rest of your source files.v
-prep -top wrapped_project
+read -formal wrapper.v wb_hyperram.v hyperram.v register_rw.v
+prep -top wrapped_wb_hyperram
 
 [files]
 wrapper.v
 properties.v
-rest of your source files.v
+wb_hyperram/src/wb_hyperram.v
+wb_hyperram/src/hyperram.v
+wb_hyperram/src/register_rw.v
+
