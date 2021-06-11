@@ -62,7 +62,7 @@ module wb_hyperram_tb;
 
 	initial begin
         // wait for timeout
-	    wait(uut.mprj.hyperram.hb_read_timeout == 1);
+	    wait(uut.mprj.wrapped_wb_hyperram.hyperram.hb_read_timeout == 1);
 		
 		`ifdef GL
 	    	$display("Monitor: Test HyperRAM Project IO (GL) Passed");
