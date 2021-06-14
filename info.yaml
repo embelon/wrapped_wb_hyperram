@@ -3,7 +3,7 @@
 project: 
   title: "Wishbone HyperRAM"
   description: "Simple HyperRAM driver accesible on Wishbone bus"
-  picture: docs/empty.png
+  picture: "docs/HyperRAM_WriteMemorySpace.png"
   author: "Pawel Sitarz"
   github: https://github.com/embelon/wrapped_wb_hyperram
   license: LICENSE
