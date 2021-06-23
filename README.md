@@ -1,6 +1,6 @@
 # Wishbone connected HyperRAM memory driver
 
-This is an implementation of a HyperRAM memory driver connected via Wishbone bus to internal picorv32 core, to be implemented inside the Caravel SoC, built on Google's SKY130 Shuttle as part of the Zero To ASIC course.
+This is an implementation of a HyperRAM memory driver connected via Wishbone bus to internal picorv32 core, to be implemented inside the Caravel SoC, built on Google's SKY130 Shuttle as part of the Zero To ASIC course (https://www.zerotoasiccourse.com/).
 
 Currently implemented:
 - working with wb_clk_i clock (external HyperRAM clock is two times smaller due to DDR)
