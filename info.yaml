@@ -11,7 +11,7 @@ project:
 # test within caravel
 caravel_test:
   recipe: "all"
-  directory: "caravel_test"
+  directory: "caravel_wb_hyperram"
   id: 11
   module_name: "wrapped_wb_hyperram"
   instance_name: "wrapped_wb_hyperram"
