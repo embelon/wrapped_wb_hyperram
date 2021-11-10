@@ -46,7 +46,7 @@ module wb_hyperram_tb;
 		$dumpvars(0, wb_hyperram_tb);
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
-		repeat (25) begin
+		repeat (35) begin
 			repeat (1000) @(posedge clock);
 			// $display("+1000 cycles");
 		end
@@ -62,7 +62,7 @@ module wb_hyperram_tb;
 
 	initial begin
         // wait for timeout
-	    wait(uut.mprj.wrapped_wb_hyperram.hyperram.hb_read_timeout == 1);
+	    wait(uut.mprj.wrapped_wb_hyperram_8.hyperram.hb_read_timeout == 1);
 		
 		`ifdef GL
 	    	$display("Monitor: Test HyperRAM Project IO (GL) Passed");
