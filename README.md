@@ -1,15 +1,11 @@
-# Information about your project
+# Wishbone connected HyperRAM memory driver
 
-This is a template project you can clone and use to take part in the multi project submission to the
-Google/Efabless/Skywater shuttle.
+This is a wrapped implementation of a HyperRAM memory driver connected via Wishbone bus to internal picorv32 core, to be implemented inside the Caravel SoC, built on Google's SKY130 Shuttle as part of the Zero To ASIC course (https://www.zerotoasiccourse.com/).
 
-The tools that will test and create the aggregated design are here: https://github.com/mattvenn/multi_project_tools
+Details and sources can be found in submodule repository: https://github.com/embelon/wb_hyperram
 
-# Project info.yaml
-
-You need to fill in the fields of [info.yaml](info.yaml)
-
-See [here for more information](https://github.com/mattvenn/multi_project_tools/blob/main/docs/project_spec.md)
+TODO:
+- move HyperRAM memory driver into user_clock2 domain with necessary clock crossing logic
 
 # License
 
