@@ -15,7 +15,7 @@ interfaces: ['la1', 'gpio', 'wishbone']
 caravel_test:
   recipe: "all"
   directory: "caravel_wb_hyperram"
-  id: 11
+  id: 8
   module_name: "wrapped_wb_hyperram"
   instance_name: "wrapped_wb_hyperram"
 
